@@ -1,0 +1,90 @@
+# -----------------------------------
+# Terraform
+# -----------------------------------
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+terraform.tfvars
+*.backup
+*.log
+override.tf
+override.tf.json
+.terraform.lock.hcl
+
+# Local .env files (for secrets/credentials)
+.env
+.env.*
+
+# Ignore plan output
+*.plan
+
+# -----------------------------------
+# React / Node.js
+# -----------------------------------
+node_modules/
+build/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+.pnpm-debug.log*
+.cache/
+coverage/
+.vite/
+
+# React Native
+android/
+ios/
+*.keystore
+
+# .next.js (if using Next.js)
+.next/
+
+# -----------------------------------
+# VSCode / JetBrains IDEs
+# -----------------------------------
+.vscode/
+.idea/
+
+# -----------------------------------
+# Logs / OS Files
+# -----------------------------------
+*.log
+.DS_Store
+Thumbs.db
+
+# -----------------------------------
+# Docker / Containers
+# -----------------------------------
+*.tar
+*.img
+docker-compose.override.yml
+
+# -----------------------------------
+# Python Virtual Envs (if using any scripts/tools)
+# -----------------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.gitfilterenv/
+
+# -----------------------------------
+# Others
+# -----------------------------------
+*.bak
+*.swp
+*.swo
+*.swn
+*.orig
+
+# Ignore any generated assets
+*.zip
+*.tar.gz
+
+# Optional for GitOps / CI/CD
+.kube/
+*.kubeconfig
