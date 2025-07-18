@@ -1,8 +1,3 @@
-resource "aws_key_pair" "deployer" {
-  key_name   = "ubuntu-key-aws"
-  public_key = file("/home/huzaifa/Downloads/ubuntu-key-aws.pem")
-}
-
 resource "aws_default_vpc" "default" {
 
 }
@@ -44,20 +39,20 @@ resource "aws_security_group" "allow_user_to_connect" {
   }
 
   tags = {
-    Name = "mysecurity"
+    Name = "wokernodeec2security"
   }
 }
 
 resource "aws_instance" "testinstance" {
   ami             = var.ami_id
   instance_type   = var.instance_type
-  key_name        = aws_key_pair.deployer.key_name
+  key_name        = "ubuntu-key-aws"
   security_groups = [aws_security_group.allow_user_to_connect.name]
   tags = {
     Name = "Automate"
   }
   root_block_device {
-    volume_size = 30 
+    volume_size = 25 
     volume_type = "gp3"
   }
 }
