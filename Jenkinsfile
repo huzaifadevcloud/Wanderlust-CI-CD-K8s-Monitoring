@@ -3,6 +3,7 @@ pipeline {
     agent {label 'ec2'}
     
     environment{
+        //same as tool name we set in Jenkins Tool
         SONAR_HOME = tool "sonar"
     }
     
@@ -24,6 +25,7 @@ pipeline {
         stage("Workspace cleanup"){
             steps{
                 script{
+                    //Not shared library function, It's a built in function.
                     cleanWs()
                 }
             }
@@ -45,6 +47,7 @@ pipeline {
             }
         }
 
+        //same as tool name we set in Jenkins Tool
         stage("OWASP: Dependency check"){
             steps{
                 script{
@@ -118,7 +121,9 @@ pipeline {
     }
     post{
         success{
+            //Pushing Artifacts file
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
+            //To trigger new job Use "build" and then job = name 
             build job: "Wanderlust-CD", parameters: [
                 string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
                 string(name: 'BACKEND_DOCKER_TAG', value: "${params.BACKEND_DOCKER_TAG}")
