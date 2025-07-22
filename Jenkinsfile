@@ -56,6 +56,15 @@ pipeline {
             }
         }
         
+        sh '''
+        echo "[DEBUG] Checking for dependency-check report in expected path:"
+        ls -l reports || echo "reports directory missing"
+        ls -l reports/dependency-check-report.xml || echo "report missing or no permission"
+        echo "[DEBUG] Full file list in workspace:"
+        find . -type f
+        '''
+
+        
         stage("SonarQube: Code Analysis"){
             steps{
                 script{
