@@ -135,7 +135,7 @@ pipeline {
     post{
         success{
             //Pushing Artifacts file
-            archiveArtifacts artifacts: '*.xml', followSymlinks: false
+            archiveArtifacts artifacts: 'reports/*.xml', followSymlinks: false
             //To trigger new job Use "build" and then job = name 
             build job: "Wanderlust-CD", parameters: [
                 string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
