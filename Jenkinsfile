@@ -54,6 +54,8 @@ pipeline {
                     owasp_dependency()
                     
                     sh '''
+                    ls -l reports/dependency-check-report.xml || echo "XML not found or inaccessible"
+                    chmod 644 reports/dependency-check-report.xml
                     echo "[DEBUG] Checking for dependency-check report in expected path:"
                     ls -l reports || echo "reports directory missing"
                     ls -l reports/dependency-check-report.xml || echo "report missing or no permission"
