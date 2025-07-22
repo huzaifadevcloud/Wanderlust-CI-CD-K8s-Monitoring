@@ -12,9 +12,7 @@ override.tf
 override.tf.json
 .terraform.lock.hcl
 
-# Local .env files (for secrets/credentials)
-.env
-.env.*
+
 
 # Ignore plan output
 *.plan
