@@ -46,7 +46,7 @@ pipeline {
                 }
             }
         }
-        /*
+        
         //same as tool name we set in Jenkins Tool
         stage("OWASP: Dependency check"){
             steps{
@@ -55,7 +55,7 @@ pipeline {
                 }
             }
         }
-        */
+        
         stage("SonarQube: Code Analysis"){
             steps{
                 script{
