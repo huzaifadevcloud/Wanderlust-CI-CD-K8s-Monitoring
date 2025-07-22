@@ -526,3 +526,24 @@ eksctl delete cluster --name=wanderlust --region=us-west-1
 ```
 
 #
+# Fix: SonarQube Webhook Not Triggering Jenkins
+
+## Problem
+
+- Jenkins is running locally (http://localhost:8080)
+- SonarQube is running on an EC2 instance
+- Webhook from SonarQube to Jenkins fails
+- `waitForQualityGate()` step in Jenkins times out
+
+## Cause
+
+SonarQube cannot reach Jenkins because `localhost` is not accessible over the internet.
+
+## Solution
+
+### 1. Expose Jenkins to Internet
+
+Use **Ngrok** to tunnel your local Jenkins:
+
+```bash
+ngrok http 8080
