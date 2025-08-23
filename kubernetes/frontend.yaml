@@ -22,6 +22,12 @@ spec:
           ports:
             - containerPort: 5173
           command: ["npm", "run", "dev", "--", "--host"]
+
+#Since you didn’t define an imagePullSecrets, Kubernetes assumes the image is public (on Docker Hub).
+#If your image is public → no problem, it will pull fine.
+#If your image is private (Docker Hub private repo, ECR, GCR, etc.) → you must create a secret and reference it using
+#imagPullSecret
+
 ---
 apiVersion: v1
 kind: Service
